@@ -40,16 +40,17 @@ class TemplateAdapterOperationsTest {
                 .thenReturn(customerTable);
 
         modelEntity = new ModelEntity();
-        modelEntity.setId("id");
-        modelEntity.setAtr1("atr1");
+        modelEntity.setId("1");
+        modelEntity.setEstado("Aprobada");
+        modelEntity.setCantidad(0L);
     }
 
     @Test
     void modelEntityPropertiesMustNotBeNull() {
-        ModelEntity modelEntityUnderTest = new ModelEntity("id", "atr1");
+        ModelEntity modelEntityUnderTest = new ModelEntity("1", "Aprobada", 0L);
 
         assertNotNull(modelEntityUnderTest.getId());
-        assertNotNull(modelEntityUnderTest.getAtr1());
+        assertNotNull(modelEntityUnderTest.getEstado());
     }
 
     @Test

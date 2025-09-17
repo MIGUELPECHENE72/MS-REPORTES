@@ -22,8 +22,4 @@ public class Handler {
         return ServerResponse.ok().bodyValue("");
     }
 
-    public Mono<ServerResponse> listenPOSTUseCase(ServerRequest serverRequest) {
-        // useCase.logic();
-        return ServerResponse.ok().bodyValue("");
-    }
 }

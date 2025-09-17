@@ -8,14 +8,16 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.*;
 public class ModelEntity {
 
     private String id;
-    private String atr1;
+    private String estado;
+    private Long cantidad;
 
     public ModelEntity() {
     }
 
-    public ModelEntity(String id, String atr1) {
+    public ModelEntity(String id, String estado, Long cantidad) {
         this.id = id;
-        this.atr1 = atr1;
+        this.estado = estado;
+        this.cantidad = cantidad;
     }
 
     @DynamoDbPartitionKey
@@ -28,12 +30,21 @@ public class ModelEntity {
         this.id = id;
     }
 
-    @DynamoDbAttribute("atr1")
-    public String getAtr1() {
-        return atr1;
+    @DynamoDbAttribute("estado")
+    public String getEstado() {
+        return estado;
     }
 
-    public void setAtr1(String atr1) {
-        this.atr1 = atr1;
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    @DynamoDbAttribute("cantidad")
+    public Long getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Long cantidad) {
+        this.cantidad = cantidad;
     }
 }
