@@ -33,6 +33,8 @@ services:
       ADAPTERS_TRANSACTION_REACTIVE_ENABLED: true
       JWT_TK_KEY: jWdLDCLzz51gKYlojoRF5dE0S1KgNP1rqj4Zaau6Rwg=
       JWT_TK_EXPIRATION: 3600000
+    depends_on:
+      - db
     networks:
       - crediya-network
 
@@ -56,6 +58,29 @@ services:
       ADAPTER_RESTCONSUMER_TIMEOUT: 5000
       ADAPTER_RESTCONSUMER_URL: http://autenticacion:8080
       JWT_TK_KEY: jWdLDCLzz51gKYlojoRF5dE0S1KgNP1rqj4Zaau6Rwg=
+    depends_on:
+      - autenticacion
+    networks:
+      - crediya-network
+
+  reportes:
+    build:
+      context: ../componente/reportes
+      dockerfile: Dockerfile
+    container_name: bk-crediya-reportes
+    image: crediya/bk-crediya-reportes:0.0.1
+    ports:
+      - "8082:8082"
+    environment:
+      CORS_ALLOWED-ORIGINS: http://localhost:4200,http://localhost:8080
+      JWT_TK_KEY: jWdLDCLzz51gKYlojoRF5dE0S1KgNP1rqj4Zaau6Rwg=
+      ENTRYPOINT_SQS_REGION: us-east-1
+      ENTRYPOINT_SQS_QUEUEURL: https://sqs.us-east-1.amazonaws.com/683134746792/ListenReporteAprobados
+      AWS_REGION: us-east-1
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+    depends_on:
+      - autenticacion
     networks:
       - crediya-network
 
