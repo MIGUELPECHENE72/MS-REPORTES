@@ -2,6 +2,7 @@ package co.com.bancolombia.dynamodb.helper;
 
 import co.com.bancolombia.dynamodb.DynamoDBTemplateAdapter;
 import co.com.bancolombia.dynamodb.ModelEntity;
+import co.com.bancolombia.model.reportesolicitud.ReporteSolicitud;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -32,6 +33,8 @@ class TemplateAdapterOperationsTest {
 
     private ModelEntity modelEntity;
 
+    private ReporteSolicitud reporteSolicitud;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -43,6 +46,8 @@ class TemplateAdapterOperationsTest {
         modelEntity.setId("1");
         modelEntity.setEstado("Aprobada");
         modelEntity.setCantidad(0L);
+
+        reporteSolicitud  = new ReporteSolicitud("1","Aprobada",0L);
     }
 
     @Test
@@ -61,7 +66,7 @@ class TemplateAdapterOperationsTest {
         DynamoDBTemplateAdapter dynamoDBTemplateAdapter =
                 new DynamoDBTemplateAdapter(dynamoDbEnhancedAsyncClient, mapper);
 
-        StepVerifier.create(dynamoDBTemplateAdapter.save(modelEntity))
+        StepVerifier.create(dynamoDBTemplateAdapter.save(reporteSolicitud))
                 .expectNextCount(1)
                 .verifyComplete();
     }
@@ -79,7 +84,7 @@ class TemplateAdapterOperationsTest {
                 new DynamoDBTemplateAdapter(dynamoDbEnhancedAsyncClient, mapper);
 
         StepVerifier.create(dynamoDBTemplateAdapter.getById("id"))
-                .expectNext("value")
+                .expectNext(reporteSolicitud)
                 .verifyComplete();
     }
 
@@ -94,8 +99,8 @@ class TemplateAdapterOperationsTest {
         DynamoDBTemplateAdapter dynamoDBTemplateAdapter =
                 new DynamoDBTemplateAdapter(dynamoDbEnhancedAsyncClient, mapper);
 
-        StepVerifier.create(dynamoDBTemplateAdapter.delete(modelEntity))
-                .expectNext("value")
+        StepVerifier.create(dynamoDBTemplateAdapter.delete(reporteSolicitud))
+                .expectNext(reporteSolicitud)
                 .verifyComplete();
     }
 }

@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "6c07a221-3b97-46f3-9b2d-040e1d96ec53",
+		"name": "Reportes (crediya)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24909186"
+	},
+	"item": [
+		{
+			"name": "Reportes",
+			"item": [
+				{
+					"name": "getById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDA3Nzc5MzA0Iiwicm9sZXMiOlsiUk9MRV9BRE1JTklTVFJBRE9SIl0sImlhdCI6MTc1ODE3MTA4OSwiZXhwIjoxNzU4MTc0Njg5fQ.sixLB83XfIW-4kzFT3OANV0RxvE07TPf1adfKd96HNY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/api/v1/reportes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"reportes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

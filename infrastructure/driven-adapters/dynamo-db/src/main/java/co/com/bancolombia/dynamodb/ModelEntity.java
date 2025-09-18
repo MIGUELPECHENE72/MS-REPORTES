@@ -21,7 +21,7 @@ public class ModelEntity {
     }
 
     @DynamoDbPartitionKey
-    @DynamoDbAttribute("name")
+    @DynamoDbAttribute("id")
     public String getId() {
         return id;
     }

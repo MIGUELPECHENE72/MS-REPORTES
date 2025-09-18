@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8082
 spring:
   application:
     name: "MS-REPORTES"
@@ -12,8 +12,7 @@ spring:
   profiles:
     include: null
 aws:
-  dynamodb:
-    endpoint: "http://localhost:8000"
+  region: "us-east-1"
 management:
   endpoints:
     web:
@@ -25,11 +24,19 @@ management:
         enabled: true
 cors:
   allowed-origins: "http://localhost:4200,http://localhost:8080"
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: "/swagger-ui.html"
+jwt:
+  tk:
+    key: "jWdLDCLzz51gKYlojoRF5dE0S1KgNP1rqj4Zaau6Rwg="
 entrypoint:
   sqs:
     region: "us-east-1"
-    endpoint: "http://localhost:4566"
-    queueUrl: "http://localhost:4566/000000000000/sample"
+    queueUrl: "https://sqs.us-east-1.amazonaws.com/683134746792/ListenReporteAprobados"
     waitTimeSeconds: 20
     maxNumberOfMessages: 10
     visibilityTimeoutSeconds: 10
