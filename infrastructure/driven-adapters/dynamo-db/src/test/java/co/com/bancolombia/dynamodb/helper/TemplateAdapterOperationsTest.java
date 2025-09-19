@@ -15,6 +15,8 @@ import software.amazon.awssdk.enhanced.dynamodb.Key;
 import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
 
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
+
+import java.math.BigDecimal;
 import java.util.concurrent.CompletableFuture;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -47,12 +49,12 @@ class TemplateAdapterOperationsTest {
         modelEntity.setEstado("Aprobada");
         modelEntity.setCantidad(0L);
 
-        reporteSolicitud  = new ReporteSolicitud("1","Aprobada",0L);
+        reporteSolicitud  = new ReporteSolicitud("1","Aprobada",0L,new BigDecimal("15000000.00"));
     }
 
     @Test
     void modelEntityPropertiesMustNotBeNull() {
-        ModelEntity modelEntityUnderTest = new ModelEntity("1", "Aprobada", 0L);
+        ModelEntity modelEntityUnderTest = new ModelEntity("1", "Aprobada", 0L,new BigDecimal("15000000.00"));
 
         assertNotNull(modelEntityUnderTest.getId());
         assertNotNull(modelEntityUnderTest.getEstado());
