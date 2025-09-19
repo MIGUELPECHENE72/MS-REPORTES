@@ -10,12 +10,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
+import java.math.BigDecimal;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class ReporteSolicitudUseCaseTest {
+class ReporteSolicitudUseCaseTest {
 
     @InjectMocks
     ReporteSolicitudUseCase reporteSolicitudUseCase;
@@ -24,7 +26,8 @@ public class ReporteSolicitudUseCaseTest {
     ReporteSolicitudRepository reporteSolicitudRepository;
 
     private static final String TEST_ID = "1";
-    private static final ReporteSolicitud reporteSolicitud = new ReporteSolicitud("1","Aprobado",2L);
+    private static final ReporteSolicitud reporteSolicitud =
+            new ReporteSolicitud("1","Aprobado",3L,new BigDecimal("2500000"));
 
     @Test
     void mustFindById(){
